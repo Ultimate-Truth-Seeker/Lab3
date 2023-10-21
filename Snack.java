@@ -1,4 +1,4 @@
-package Lab3;
+//package Lab3;
 
 public class Snack extends Product {
     private float gr;

@@ -1,4 +1,4 @@
-package Lab3;
+//package Lab3;
 
 public abstract class Product {
     protected int id;

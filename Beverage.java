@@ -1,4 +1,4 @@
-package Lab3;
+//package Lab3;
 
 public class Beverage extends Product {
     private float ml;
