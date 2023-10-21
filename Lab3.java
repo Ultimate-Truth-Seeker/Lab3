@@ -6,7 +6,12 @@ import java.util.List;
 import java.util.Scanner;
 
 import javax.rmi.ssl.SslRMIClientSocketFactory;
-
+/**
+ * Programa para informes de ventas
+ * 
+ * @author Ultimate-Truth-Seeker
+ * @version 21-10-2023
+ */
 public class Lab3 {
     public static void main(String[] args) {
         List<Product> products = new ArrayList<>();
@@ -14,7 +19,7 @@ public class Lab3 {
         Scanner s = new Scanner(System.in);
         System.out.println("Bienvenido, escriba el nombre del .csv con los datos (asegurese que está en la misma carpeta)");
         String path = s.nextLine();
-        try (Scanner rd = new Scanner(new File(path))) {
+        try (Scanner rd = new Scanner(new File(path))) {// Procesa los datos del csv
             while (rd.hasNextLine()) {
                 Scanner lr = new Scanner(rd.nextLine());
                 lr.useDelimiter(",");
@@ -49,17 +54,17 @@ public class Lab3 {
                     products.add(other);
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e) {// retorna error y termina el programa si ocurre un problema
             System.out.println("Error al leer archivo, revise bien el nombre y los campos de datos");
             menu = false;
         }
-        while (menu) {
+        while (menu) {// menu
             System.out.println("Seleccione una opción:\n1.Buscar producto por id\n2.Buscar productos por categoría\n3.Total de ventas y comisión personal\n4.Informe\n5.Salir");
             int op = s.nextInt();
             switch (op) {
                 default:
                 break;
-                case 1:
+                case 1:// buscar producto por id
                 System.out.println("Ingrese el id:");
                 int id = s.nextInt();
                 for (Product p : products) {
@@ -68,7 +73,7 @@ public class Lab3 {
                     }
                 }
                 break;
-                case 2:
+                case 2:// Listar productos por categoría
                 s.nextLine();
                 System.out.println("Ingrese el nombre de la categoría:");
                 String category = s.nextLine();
@@ -86,7 +91,7 @@ public class Lab3 {
                     }
                 }
                 break;
-                case 3:
+                case 3:// Total de ventas y comisiones
                 float total = 0;
                 int n = 0;
                 float comission = 0;
@@ -112,7 +117,7 @@ public class Lab3 {
                 }
 
                 break;
-                case 4:
+                case 4:// Informe con todos los elementos
                 List<String> cats = new ArrayList<>();
                 List<Integer> ncats = new ArrayList<>();
                 int nbev = 0; int nsnack= 0;
@@ -184,7 +189,7 @@ public class Lab3 {
                     System.out.println(cat + ": Q" + comissions.get(categories.indexOf(cat)));
                 }
                 break;
-                case 5:
+                case 5:// salida del programa
                 menu = false;
                 break;
             }
